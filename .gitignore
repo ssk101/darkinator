@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+.env
+*.pyc
+__pycache__
+*.log
+tempCodeRunnerFile.*
+tmp
+yarn-error.log

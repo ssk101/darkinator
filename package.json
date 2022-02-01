@@ -1,0 +1,13 @@
+{
+  "name": "@ssk101/darkinator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Steel Sky <steelskysoftware@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {},
+  "engines": {
+    "node": ">= 17.1.0"
+  },
+  "dependencies": {}
+}
