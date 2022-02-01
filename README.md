@@ -1,6 +1,6 @@
-# darkinator
-D A R K I N A T E
+# D A R K I N A T O R
 
+### The light is the enemy.
 
 1. Go to [chrome://extensions](chrome://extensions)
 2. Toggle `Developer mode` on
