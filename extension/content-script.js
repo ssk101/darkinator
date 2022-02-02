@@ -8,7 +8,21 @@ function toggleDarkinate(state) {
 }
 
 function applyState() {
-  const style = `html { filter: ${isDarkinated() ? 'invert(1)' : 'initial'} }`
+  const filterVal = (darkinated = isDarkinated()) => {
+    return darkinated ? 'invert(1)' : 'initial'
+  }
+
+  const style = `
+    :root {
+      filter: ${filterVal()}
+    }
+    iframe :root {
+      filter: ${filterVal()}
+    }
+    img, video, svg, canvas, object {
+      filter: ${filterVal()}
+    }
+  `
   const sheet = new CSSStyleSheet()
   sheet.replaceSync(style)
   document.adoptedStyleSheets = [sheet]
