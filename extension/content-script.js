@@ -19,7 +19,7 @@ function applyState() {
     iframe :root {
       filter: ${filterVal()}
     }
-    img, video, svg, canvas, object {
+    img, video, svg, canvas, object, map {
       filter: ${filterVal()}
     }
   `
