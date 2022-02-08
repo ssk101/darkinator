@@ -2,32 +2,19 @@
 <html>
   <head>
     <title>Darkinator</title>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" type="module"></script>
   </head>
-  <style>
-    :root {
-      --bg-0: #222222;
-      --bg-1: #444444;
-      --bg-2: #ffffff;
-      --fg-0: #ffffff;
-      --fg-1: #ffffff;
-      --fg-0: #222222;
-    }
-    html {
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      background: var(--bg-2);
-      color: var(--fg-2);
-    }
-    button {
-      border: none;
-      cursor: pointer;
-    }
-
-  </style>
   <body>
-    <button id="darkinate">D A R K I N A T E</button>
+    <section>
+      <div class="item">
+        <div class="toggle">
+          <label>
+            <input data-action="darkinate" type="checkbox" />
+            <div class="toggle-knob"></div>
+          </label>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

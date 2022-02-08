@@ -1,16 +1,22 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Darkinator",
-  "description": "",
+  "description": "Automatic dark mode for any* website",
   "version": "1.0",
-  "browser_action": {
+  "action": {
     "default_icon": "icon.png",
     "default_popup": "index.html"
   },
   "permissions": [
-    "activeTab",
-    "declarativeContent"
+    "tabs",
+    "declarativeContent",
+    "storage"
   ],
+  "web_accessible_resources" : [{
+    "resources": ["utils.js"],
+    "matches": ["https://*/*", "http://*/*"]
+  }],
+  "options_page": "options.html",
   "content_scripts": [{
     "js": ["content-script.js"],
     "matches": ["https://*/*", "http://*/*"],

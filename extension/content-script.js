@@ -1,41 +1,34 @@
-function isDarkinated() {
-  return Boolean(+(localStorage.getItem('darkinated') || 0))
-}
-
-function toggleDarkinate(state) {
-  localStorage.setItem('darkinated', Number(!isDarkinated()))
-  applyState()
-}
-
-function applyState() {
-  const filterVal = (darkinated = isDarkinated()) => {
-    return darkinated ? 'invert(1)' : 'initial'
-  }
-
-  const style = `
-    :root {
-      filter: ${filterVal()}
-    }
-    iframe :root {
-      filter: ${filterVal()}
-    }
-    img, video, svg, canvas, object, map {
-      filter: ${filterVal()}
-    }
-  `
+function applyStyles(style) {
   const sheet = new CSSStyleSheet()
   sheet.replaceSync(style)
   document.adoptedStyleSheets = [sheet]
 }
 
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    if(request.message === 'toggle') {
-      localStorage.setItem('darkinated', Number(!isDarkinated()))
-      applyState()
-      sendResponse({ isDarkinated: isDarkinated() })
-    }
-  }
-)
+const actions = {
+  darkinate: function(settings) {
+    const filter = settings.darkinate ? 'invert(1)' : 'initial'
+    const style = `
+      :root body {
+        filter: ${filter}
+      }
+      iframe :root body {
+        filter: ${filter}
+      }
+      img, video, svg, canvas, object, map {
+        filter: ${filter}
+      }
+    `
 
-applyState()
+    return applyStyles(style)
+  }
+}
+
+chrome.runtime.onMessage.addListener(async (req, sender, sendResponse) => {
+  const { action, settings, data = {} } = req
+
+  console.log(settings)
+
+  if(Object.keys(actions).includes(action)) {
+    actions[action](settings, data)
+  }
+})
